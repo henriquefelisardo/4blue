@@ -1,0 +1,1328 @@
+{
+  "name": "telegramSender",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4c7a29b-2ad6-4d9a-957e-e7afef0a5ad8",
+              "name": "Nome",
+              "value": "={{ $('Get a row').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "8de39b0a-3d7b-4263-96f4-2ada1a8db90a",
+              "name": "Email",
+              "value": "={{ $('AnalisaID').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "4e7fa121-c0cd-4fda-ab01-663ffa3784e8",
+              "name": "dataDeNascimento",
+              "value": "={{ $('Get a row').item.json.Data_Nascimento }}",
+              "type": "string"
+            },
+            {
+              "id": "0cc21abc-4c6c-44ea-82f8-acbda6a61e29",
+              "name": "Telefone",
+              "value": "={{ $('Get a row').item.json.Telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "cd99add9-a5a5-40c0-bc7c-5693b4a02611",
+              "name": "Curso",
+              "value": "={{ $('Get a row').item.json.Curso }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        256,
+        384
+      ],
+      "id": "63186a01-5edf-4bb9-a500-bf33f70a7218",
+      "name": "Filtra Variaveis"
+    },
+    {
+      "parameters": {
+        "tableId": "matriculas_users",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "id",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        576
+      ],
+      "id": "3467157e-3ed7-485a-abc5-346d55d936c4",
+      "name": "Create a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "matriculas_users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        96,
+        384
+      ],
+      "id": "6ef8432e-fd6b-437d-abdc-49a356e21d61",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1360,
+        320
+      ],
+      "id": "5d6863b8-3d01-4cce-b010-9c163ae46bda",
+      "name": "Telegram Trigger",
+      "webhookId": "1451dfb6-062a-4375-8c60-20d560dd0712",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Olá tudo bem?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -992,
+        576
+      ],
+      "id": "7564082c-4832-4929-bde6-c93ea3cc73ab",
+      "name": "Send a text message",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Qual o seu nome?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -832,
+        576
+      ],
+      "id": "c2078d15-a7cb-4172-9727-3f3edcae65d3",
+      "name": "Send a text message1",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Qual o seu email?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -64,
+        -384
+      ],
+      "id": "ba78cd27-d134-4ec4-88b8-9999fb79ed4a",
+      "name": "Send a text message2",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Qual a sua data de nascimento?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -64,
+        -224
+      ],
+      "id": "019387a1-3827-4d67-b03d-2aaf5c707f43",
+      "name": "Send a text message3",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Qual o seu telefone?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -64,
+        -64
+      ],
+      "id": "de8fbc20-71b4-4c0e-b0cd-86f72bab43b0",
+      "name": "Send a text message4",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Qual o seu curso?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -64,
+        96
+      ],
+      "id": "937a8c70-9155-4773-a752-0148a2d81c97",
+      "name": "Send a text message5",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Telefone",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "5"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        96
+      ],
+      "id": "7a9fa7a3-2d95-43eb-924d-9b90a632f710",
+      "name": "UpdateTelefone",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Data_Nascimento",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "4"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        -64
+      ],
+      "id": "9b0f9ecc-4de8-4461-b3a2-289a591c7010",
+      "name": "UpdateDataNasc",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "3"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        -224
+      ],
+      "id": "aa9db99a-5cbe-4241-978a-85bc97e94775",
+      "name": "UpdateEmail",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "2"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        -384
+      ],
+      "id": "d8fc891b-82d1-4133-b67c-11ebbe0898a3",
+      "name": "UpdateNome",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Curso",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "6"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        224
+      ],
+      "id": "a24092c8-f701-4ec6-8ce0-7705bef2b634",
+      "name": "UpdateCurso",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Usuário Novo",
+        "height": 224,
+        "width": 800,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1424,
+        544
+      ],
+      "id": "bdad0dc1-7626-4546-8578-3877d1538e1c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "matriculas_users",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": "={{ $json.message.chat.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        320
+      ],
+      "id": "9f592d78-3c60-46c5-b1db-19495ca840cf",
+      "name": "AnalisaID",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "88f06e81-519e-41c7-a0f2-6070f953ca66",
+              "name": "result",
+              "value": "={{ $json }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -992,
+        320
+      ],
+      "id": "1abe8667-0090-4128-9f58-57aa978591b7",
+      "name": "NewUser"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ced7589a-b9c1-4a00-b27c-d1f61296a0e5",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "={{\"{}\"}}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -832,
+        320
+      ],
+      "id": "67fb1bda-2590-4759-88f2-3c262d9ef004",
+      "name": "FiltroNewUser"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "a714e60d-06ec-4e00-9a19-c5f0d5007fcd"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7385052d-0f7f-4beb-bdd2-7c214ae4d911",
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "51219dfa-9b0e-4b81-bf30-f36c8a5825e5",
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 3"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "419d69d4-6591-4871-8650-c54cdd885348",
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 4"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9a18e296-8c7d-481c-a29a-ff3852e88a32",
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 5"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9b4fdb1f-19f6-4a8f-b16a-e4bd51486a30",
+                    "leftValue": "={{ $('AnalisaID').item.json.etapa }}",
+                    "rightValue": 6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "etapa 6"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -544,
+        240
+      ],
+      "id": "8be45729-2843-41ac-8f81-b728a39e9762",
+      "name": "DecideEtapa"
+    },
+    {
+      "parameters": {
+        "content": "## Atualiza Supabase",
+        "height": 1072,
+        "width": 160,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -528
+      ],
+      "id": "b2cf858a-d69f-4373-a093-dd26744fdbb0",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Envia próxima etapa",
+        "height": 1072,
+        "width": 160,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        -528
+      ],
+      "id": "f645bfe1-48a9-42b6-a0db-db05ef8aab07",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4c7a29b-2ad6-4d9a-957e-e7afef0a5ad8",
+              "name": "Nome",
+              "value": "={{ $json.Nome.toTitleCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "8de39b0a-3d7b-4263-96f4-2ada1a8db90a",
+              "name": "Email",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "4e7fa121-c0cd-4fda-ab01-663ffa3784e8",
+              "name": "dataDeNascimento",
+              "value": "={{ $json.dataDeNascimento.split('/').reverse().join('-') }}",
+              "type": "string"
+            },
+            {
+              "id": "0cc21abc-4c6c-44ea-82f8-acbda6a61e29",
+              "name": "Telefone",
+              "value": "={{ $json.Telefone.replace(/\\D/g,'') }}",
+              "type": "string"
+            },
+            {
+              "id": "cd99add9-a5a5-40c0-bc7c-5693b4a02611",
+              "name": "Curso",
+              "value": "={{ $json.Curso.toTitleCase() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        464,
+        384
+      ],
+      "id": "5af2a195-3eb0-49bf-a3ea-846feadb389a",
+      "name": "Filtra Variaveis_"
+    },
+    {
+      "parameters": {
+        "content": "## Analisa User",
+        "height": 368,
+        "width": 576,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        176
+      ],
+      "id": "edc65785-8370-414c-863c-642ce956aaf8",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Recebe as mensagens ",
+        "height": 368,
+        "width": 224,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1424,
+        176
+      ],
+      "id": "243533fc-3f2d-40da-92ca-7058281729e4",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Decide Etapa",
+        "height": 368,
+        "width": 368,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        176
+      ],
+      "id": "812c91a9-31c5-4828-a4ae-6797705d22f0",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Analisa o Supabase",
+        "height": 304,
+        "width": 160,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        64,
+        240
+      ],
+      "id": "35b69cf9-483a-4bd5-8ded-ded3a4e4a802",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Realiza os filtros",
+        "height": 304,
+        "width": 432,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        224,
+        240
+      ],
+      "id": "3a511b98-dbae-4987-8ed3-ebaef359882e",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Envia mensagens finais e faz a requisição do Email",
+        "height": 736,
+        "width": 416,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        656,
+        32
+      ],
+      "id": "0091564c-43fe-4145-b465-bf990869ef27",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=Obrigado {{ $json.Nome }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        752,
+        208
+      ],
+      "id": "6d09e68b-5ead-4d53-b878-006bb6925e18",
+      "name": "Concluido",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=Sua matrícula no curso {{ $('Filtra Variaveis_').item.json.Curso }} foi concluída com sucesso!",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        928,
+        208
+      ],
+      "id": "a37da745-3709-4a0b-b8b1-0c88c805af1a",
+      "name": "Confirmacao",
+      "webhookId": "e891c1cf-2f83-4e17-b049-0305948912c5",
+      "credentials": {
+        "telegramApi": {
+          "id": "MDKxVdD5ImETrEFi",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "matriculas_users",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "Curso",
+              "fieldValue": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "fieldId": "etapa",
+              "fieldValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        384
+      ],
+      "id": "c72a77c7-21e1-4af2-b740-65ef083815b4",
+      "name": "Reset",
+      "alwaysOutputData": false,
+      "credentials": {
+        "supabaseApi": {
+          "id": "3e1Wzrkb8iIkt8Hx",
+          "name": "Supabase account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"nome_completo\": \"{{ $json.Nome }}\",\n\"email_aluno\": \"{{ $json.Email }}\",\n\"data_nascimento\": \"{{ $json.dataDeNascimento }}\",\n\"telefone\": \"{{ $json.Telefone }}\",\n\"curso_escolhido\": \"{{ $json.Curso }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        752,
+        384
+      ],
+      "id": "09a08565-2e49-41c8-8e49-eecdd1512e17",
+      "name": "TestSenderLv2",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"nome_completo\": \"{{ $json.Nome }}\",\n\"email_aluno\": \"{{ $json.Email }}\",\n\"data_nascimento\": \"{{ $json.dataDeNascimento }}\",\n\"telefone\": \"{{ $json.Telefone }}\",\n\"curso_escolhido\": \"{{ $json.Curso }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        752,
+        544
+      ],
+      "id": "5e6a7758-cc44-4162-a68a-24b394e137c7",
+      "name": "ProdSenderLv2",
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "Telegram Trigger": [
+      {
+        "json": {
+          "update_id": 87209649,
+          "message": {
+            "message_id": 444,
+            "from": {
+              "id": 1019101280,
+              "is_bot": false,
+              "first_name": "Henrique",
+              "last_name": "Felisardo",
+              "username": "henryfelisardo",
+              "language_code": "pt-br"
+            },
+            "chat": {
+              "id": 1019101280,
+              "first_name": "Henrique",
+              "last_name": "Felisardo",
+              "username": "henryfelisardo",
+              "type": "private"
+            },
+            "date": 1773098650,
+            "text": "Tech"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Filtra Variaveis": {
+      "main": [
+        [
+          {
+            "node": "Filtra Variaveis_",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a row": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Filtra Variaveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "AnalisaID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message1": {
+      "main": [
+        []
+      ]
+    },
+    "Send a text message3": {
+      "main": [
+        []
+      ]
+    },
+    "UpdateTelefone": {
+      "main": [
+        [
+          {
+            "node": "Send a text message5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateDataNasc": {
+      "main": [
+        [
+          {
+            "node": "Send a text message4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateEmail": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateNome": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateCurso": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AnalisaID": {
+      "main": [
+        [
+          {
+            "node": "NewUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NewUser": {
+      "main": [
+        [
+          {
+            "node": "FiltroNewUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FiltroNewUser": {
+      "main": [
+        [
+          {
+            "node": "DecideEtapa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DecideEtapa": {
+      "main": [
+        [
+          {
+            "node": "UpdateNome",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateEmail",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateDataNasc",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateTelefone",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateCurso",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra Variaveis_": {
+      "main": [
+        [
+          {
+            "node": "TestSenderLv2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Concluido",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ProdSenderLv2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concluido": {
+      "main": [
+        [
+          {
+            "node": "Confirmacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TestSenderLv2": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "309cc03f-4bc0-46f0-a711-77c064a1933d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc0bcbaed5942825d40eb7dd9dcbb6ab0108046af92a3af9d5e04ea54a24a948"
+  },
+  "id": "3wvn6XvLpHGlBoJ3",
+  "tags": []
+}

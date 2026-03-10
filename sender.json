@@ -1,0 +1,392 @@
+{
+  "name": "sender",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        624
+      ],
+      "id": "d5fff844-82ba-4d04-8dd2-c8b4d66a7ca4",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"henrique felisardo\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Tech\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        192
+      ],
+      "id": "f11e0bea-aa54-48ff-bb72-3a8592dc3caa",
+      "name": "Tech",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Business\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        240,
+        192
+      ],
+      "id": "d256487c-10fe-4c44-b453-ac0667f03c35",
+      "name": "Business",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"henrique felisardo\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Tech\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        768
+      ],
+      "id": "ebabda12-cb36-48a8-b5f7-f04336b2ece0",
+      "name": "Tech1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Business\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        240,
+        768
+      ],
+      "id": "020c6a3a-2ff1-405f-b2a9-bdda62880c0b",
+      "name": "Business1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook-test/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Arquitetura\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        448,
+        768
+      ],
+      "id": "dc7f8299-a6a9-439b-b860-0e3b93046adb",
+      "name": "Default",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Test",
+        "height": 288,
+        "width": 448,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        96
+      ],
+      "id": "e9396c8a-85c3-41d2-9b70-2065e5960b1c",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Produção",
+        "height": 288,
+        "width": 448,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        384
+      ],
+      "id": "3e52386a-ef54-45b8-9451-50ef9de6d4ed",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"henrique felisardo\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Tech\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        480
+      ],
+      "id": "43e524c4-1438-4eef-853e-cef66c5de29d",
+      "name": "Tech2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Business\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        240,
+        480
+      ],
+      "id": "8132c4ca-28c4-4f9f-8eb2-8e70aa5955d8",
+      "name": "Business2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"henrique felisardo\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Tech\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        1056
+      ],
+      "id": "0742741a-7f84-427e-bd01-2ee09ffce814",
+      "name": "Tech3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Business\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        240,
+        1056
+      ],
+      "id": "8a0b77c0-1331-49a3-af7f-72559aebf4cf",
+      "name": "Business3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ttc.4blue.com.br/webhook/5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"nome_completo\": \"felisardo henrique\",\n\"email_aluno\": \"henriquefelisardo@gmail.com\",\n\"data_nascimento\": \"01/03/2002\",\n\"telefone\": \"(11) 98283-0261\",\n\"curso_escolhido\": \"Arquitetura\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        448,
+        1056
+      ],
+      "id": "e3f1956f-f24a-44e9-b0f3-9cd1118f9a53",
+      "name": "Default1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## ProduçãoLv2",
+        "height": 288,
+        "width": 656,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        960
+      ],
+      "id": "e992d86f-4289-4491-ba01-a60ddfa1ef4e",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## TestLv2",
+        "height": 288,
+        "width": 656,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        672
+      ],
+      "id": "efac641f-a474-4001-aff3-3debb582528a",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Iniciador",
+        "height": 576,
+        "width": 464,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        384
+      ],
+      "id": "733fec87-4036-4d27-9423-3d5c1c86ea54",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Tech",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tech1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tech2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Tech3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech1": {
+      "main": [
+        [
+          {
+            "node": "Business1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Business1": {
+      "main": [
+        [
+          {
+            "node": "Default",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech": {
+      "main": [
+        [
+          {
+            "node": "Business",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech2": {
+      "main": [
+        [
+          {
+            "node": "Business2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech3": {
+      "main": [
+        [
+          {
+            "node": "Business3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Business3": {
+      "main": [
+        [
+          {
+            "node": "Default1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b25fcd2f-1b5b-4dc9-b85f-35cc490b7328",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc0bcbaed5942825d40eb7dd9dcbb6ab0108046af92a3af9d5e04ea54a24a948"
+  },
+  "id": "tHflYbpSAPVVGZjH",
+  "tags": []
+}

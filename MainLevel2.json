@@ -1,0 +1,1361 @@
+{
+  "name": "MainLevel2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5de90f75-74bc-411c-8957-4b55ddf88b5f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -640,
+        160
+      ],
+      "id": "d978b69c-9672-4614-81aa-1be2461246d9",
+      "name": "Webhook",
+      "webhookId": "5de90f75-74bc-411c-8957-4b55ddf88b5f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4c7a29b-2ad6-4d9a-957e-e7afef0a5ad8",
+              "name": "Nome",
+              "value": "={{ $json.body.nome_completo.toTitleCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "8de39b0a-3d7b-4263-96f4-2ada1a8db90a",
+              "name": "Email",
+              "value": "={{ $json.body.email_aluno }}",
+              "type": "string"
+            },
+            {
+              "id": "4e7fa121-c0cd-4fda-ab01-663ffa3784e8",
+              "name": "dataDeNascimento",
+              "value": "={{ $json.body.data_nascimento.split('/').reverse().join('-') }}",
+              "type": "string"
+            },
+            {
+              "id": "0cc21abc-4c6c-44ea-82f8-acbda6a61e29",
+              "name": "Telefone",
+              "value": "={{ $json.body.telefone.replace(/\\D/g,'') }}",
+              "type": "string"
+            },
+            {
+              "id": "cd99add9-a5a5-40c0-bc7c-5693b4a02611",
+              "name": "Curso",
+              "value": "={{ $json.body.curso_escolhido }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -384,
+        160
+      ],
+      "id": "72009db7-70c2-4a80-96e9-5e638434c50e",
+      "name": "Filtra Variaveis"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "zpn5ZigES0JO1ROP",
+          "mode": "list",
+          "cachedResultName": "matriculas_tech",
+          "cachedResultUrl": "/projects/sUcPwx3lFU0juwA4/datatables/zpn5ZigES0JO1ROP"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        624,
+        -32
+      ],
+      "id": "57809f0a-b383-4ec3-bf42-a2c9b7aff803",
+      "name": "Add DataTable Tech"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "OSbpTAkejgAooeMU",
+          "mode": "list",
+          "cachedResultName": "matriculas_biz",
+          "cachedResultUrl": "/projects/sUcPwx3lFU0juwA4/datatables/OSbpTAkejgAooeMU"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        624,
+        160
+      ],
+      "id": "3c98058a-c3bb-42e2-b6c4-bd9907da7a47",
+      "name": "Add DataTable Business"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Filtra Variaveis').item.json.Email }}",
+        "subject": "=Boas Vindas ao Curso!",
+        "emailType": "text",
+        "message": "=Olá {{ $json.Nome }}, sua matrícula no curso {{ $json.Curso }} foi recebida com sucesso!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        160
+      ],
+      "id": "9d8d98e1-d969-46c9-a7fb-f1fb083aa75e",
+      "name": "Enviar Email",
+      "webhookId": "aa7286fe-e338-4204-9583-0c867facfac0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MC6d2dPTaTvtsHmw",
+          "name": "Gmail account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Curso }}",
+                    "rightValue": "=Tech",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "418a59f8-238f-45e9-9aac-ee63d358bf1b"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tech"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4b4cbabb-689f-43e1-8d8c-2cf1802bc761",
+                    "leftValue": "={{ $json.Curso }}",
+                    "rightValue": "Business",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Business"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "01aeeebc-96a4-4ef1-8b13-84a391f0aa60",
+                    "leftValue": "Default",
+                    "rightValue": "Tech,Business",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Default"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -128,
+        144
+      ],
+      "id": "e932cfec-2b47-4e41-91a5-a9845e4981c7",
+      "name": "Decide Node"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw",
+          "mode": "list",
+          "cachedResultName": "4Blue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2094094146,
+          "mode": "list",
+          "cachedResultName": "matriculas_biz",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit#gid=2094094146"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        160
+      ],
+      "id": "72439102-2683-4c44-8248-370d670fe3dd",
+      "name": "matriculas_biz1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nxRT0h3nLfRfkuY6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw",
+          "mode": "list",
+          "cachedResultName": "4Blue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "matriculas_tech",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        -32
+      ],
+      "id": "41ebf5a7-d3c3-4b39-b850-bb23c1804568",
+      "name": "matriculas_tech1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nxRT0h3nLfRfkuY6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw",
+          "mode": "list",
+          "cachedResultName": "4Blue",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 230517022,
+          "mode": "list",
+          "cachedResultName": "matriculas_default",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ney4XUPTqh7GMw7uLGvW6jOODLJgb249nH0AhXK58Bw/edit#gid=230517022"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        352
+      ],
+      "id": "790a7c35-a91f-4dc5-9c05-3221eaaf3c64",
+      "name": "Add DataTable Default2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nxRT0h3nLfRfkuY6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "matriculas_tech",
+          "mode": "list",
+          "cachedResultName": "matriculas_tech"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updatedAt",
+              "displayName": "updatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        128,
+        -32
+      ],
+      "id": "fa8b2412-ba68-4177-97be-1c84e97e0dd0",
+      "name": "techPostgres",
+      "credentials": {
+        "postgres": {
+          "id": "x70sr1RV9Hu7V4PR",
+          "name": "Postgres account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "matriculas_biz",
+          "mode": "list",
+          "cachedResultName": "matriculas_biz"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updatedAt",
+              "displayName": "updatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        128,
+        160
+      ],
+      "id": "027784dd-1893-4cc9-899b-2e9e3c1dcb44",
+      "name": "businessPostgres",
+      "credentials": {
+        "postgres": {
+          "id": "x70sr1RV9Hu7V4PR",
+          "name": "Postgres account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "matriculas_default",
+          "mode": "list",
+          "cachedResultName": "matriculas_default"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "updatedAt",
+              "displayName": "updatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        128,
+        352
+      ],
+      "id": "05a27dd3-1ccc-41c6-8606-680b0d03f1bb",
+      "name": "defaultPostgres1",
+      "credentials": {
+        "postgres": {
+          "id": "x70sr1RV9Hu7V4PR",
+          "name": "Postgres account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Recebe a requisição ",
+        "height": 752,
+        "width": 256,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        -192
+      ],
+      "id": "c64a4f93-e48c-4354-9685-347fcc2c6c48",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Filtra as variáveis ",
+        "height": 752,
+        "width": 256,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        -192
+      ],
+      "id": "e262ae1e-f62c-4e47-9639-001e3b5c57fd",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Alterna entre os cursos",
+        "height": 752,
+        "width": 256,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -192
+      ],
+      "id": "644562e1-c864-4d18-a6bf-c173c0214b4c",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona ao banco de dados do Postgres",
+        "height": 752,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        48,
+        -192
+      ],
+      "id": "4944d248-2386-4ed2-bcfc-e151d327abe3",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona a planilha no Sheets",
+        "height": 752,
+        "width": 256,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        288,
+        -192
+      ],
+      "id": "3db9de65-778d-4f75-84a4-9ce9cf34a063",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Adiciona ao banco de dados do n8n",
+        "height": 752,
+        "width": 256,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        544,
+        -192
+      ],
+      "id": "382b9542-82e6-4acd-8b26-4f245880d7ec",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Envia o Email",
+        "height": 752,
+        "width": 256,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -192
+      ],
+      "id": "516d263c-83a6-4225-95b3-d0cf556764de",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "4kIyM8aord1EbBpV",
+          "mode": "list",
+          "cachedResultName": "matriculas_default",
+          "cachedResultUrl": "/projects/sUcPwx3lFU0juwA4/datatables/4kIyM8aord1EbBpV"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('Filtra Variaveis').item.json.Nome }}",
+            "Email": "={{ $('Filtra Variaveis').item.json.Email }}",
+            "Data_Nascimento": "={{ $('Filtra Variaveis').item.json.dataDeNascimento }}",
+            "Telefone": "={{ $('Filtra Variaveis').item.json.Telefone }}",
+            "Curso": "={{ $('Filtra Variaveis').item.json.Curso }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Data_Nascimento",
+              "displayName": "Data_Nascimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Curso",
+              "displayName": "Curso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        624,
+        352
+      ],
+      "id": "cec72c34-6c43-4ea5-9252-f17c1b584f82",
+      "name": "Add DataTable Default"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filtra Variaveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra Variaveis": {
+      "main": [
+        [
+          {
+            "node": "Decide Node",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add DataTable Tech": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add DataTable Business": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decide Node": {
+      "main": [
+        [
+          {
+            "node": "techPostgres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "businessPostgres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "defaultPostgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "techPostgres": {
+      "main": [
+        [
+          {
+            "node": "matriculas_tech1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "matriculas_tech1": {
+      "main": [
+        [
+          {
+            "node": "Add DataTable Tech",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "businessPostgres": {
+      "main": [
+        [
+          {
+            "node": "matriculas_biz1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "matriculas_biz1": {
+      "main": [
+        [
+          {
+            "node": "Add DataTable Business",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "defaultPostgres1": {
+      "main": [
+        [
+          {
+            "node": "Add DataTable Default2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add DataTable Default2": {
+      "main": [
+        [
+          {
+            "node": "Add DataTable Default",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add DataTable Default": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5a45a191-956d-4152-a501-1e4cf0c7dd57",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc0bcbaed5942825d40eb7dd9dcbb6ab0108046af92a3af9d5e04ea54a24a948"
+  },
+  "id": "DhN80Wcd0ji9eFDv",
+  "tags": []
+}
