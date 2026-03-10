@@ -2,11 +2,11 @@
 
 Este repositório contém a minha solução para o desafio de automação de matrículas utilizando o n8n. O objetivo principal deste fluxo é cumprir todos os requisitos obrigatórios solicitados, garantindo a captura, o tratamento seguro dos dados e a comunicação automatizada com os novos alunos.
 
-## Como o fluxo funciona ⚙️
+## Como o fluxo funciona (Main.json)⚙️
 
 O processo foi dividido em etapas claras e separadas por contexto para facilitar a visualização e a manutenção.
 
-No recebimento da requisição, o fluxo é iniciado por um Webhook configurado no método POST, que aguarda o payload com os dados do novo aluno.
+No recebimento da requisição, o fluxo é iniciado por um Webhook configurado no método POST, que aguarda o payload feito pelo node http do workflow (sender.json) com os dados do novo aluno.
 
 Para o tratamento de dados, utilizei um nó de definição de variáveis com funções JavaScript para padronizar as informações. O nome recebe a primeira letra de cada palavra maiúscula, a data é convertida do padrão brasileiro para o americano (YYYY-MM-DD) e utilizei Regex para extrair e manter apenas os números do telefone.
 
@@ -29,7 +29,7 @@ Gravei um vídeo rápido demonstrando o fluxo em execução, explicando a lógic
 Link do vídeo Principal: https://www.loom.com/share/d7ce3964991b404f94bf2419db68dcf2
 
 
-## O Nível Extra: Bot do Telegram e Arquitetura Escalável 🚀
+## O Nível Extra: Bot do Telegram e Arquitetura Escalável (MainLevel2.json e telegramSender.json) 🚀
 
 Para demonstrar domínio avançado com a ferramenta e apresentar uma solução mais robusta, desenvolvi uma versão extra do projeto com uma arquitetura de múltiplas integrações e coleta de dados conversacional.
 
